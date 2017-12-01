@@ -1,8 +1,10 @@
 package demo
 
-import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertAll
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.function.Executable
 
 class HelloJunit5Test {
 
@@ -19,8 +21,17 @@ class HelloJunit5Test {
 
     @Test
     fun `Base assertions`() {
-        Assertions.assertEquals("a", "a")
-        Assertions.assertEquals(2, 1 + 1, "Optional message")
-        Assertions.assertEquals(2, 1 + 1, { "Assertion message " + "can be lazily evaluated" })
+        assertEquals("a", "a")
+        assertEquals(2, 1 + 1, "Optional message")
+        assertEquals(2, 1 + 1, { "Assertion message " + "can be lazily evaluated" })
+    }
+
+    @Test
+    fun `Grouped assertions`() {
+        val person = Person("John", "Doe")
+        assertAll("person",
+                Executable { assertEquals("John", person.firstName) },
+                Executable { assertEquals("Doe", person.lastName) }
+        )
     }
 }

@@ -3,6 +3,7 @@ package demo
 import org.junit.jupiter.api.Assertions.assertAll
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.function.Executable
@@ -42,5 +43,11 @@ class HelloJunit5Test {
             throw IllegalArgumentException("exception message")
         })
         assertEquals("exception message", exception.message)
+    }
+
+    @Test
+    fun `Test assertTrue with lambda`() {
+        val list = listOf("")
+        assertTrue(list::isNotEmpty)
     }
 }

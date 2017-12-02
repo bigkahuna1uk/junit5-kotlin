@@ -30,7 +30,7 @@ class HelloJunit5Test {
 
     @Test
     fun `Grouped assertions`() {
-        val person = Person("John", "Doe")
+        val person = Person("John", "Doe", null)
         assertAll("person",
                 Executable { assertEquals("John", person.firstName) },
                 Executable { assertEquals("Doe", person.lastName) }

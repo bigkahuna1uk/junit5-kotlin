@@ -46,7 +46,7 @@ class HelloJunit5Test {
     }
 
     @Test
-    fun `Test assertTrue with lambda`() {
+    fun `Test assertTrue with reference`() {
         val list = listOf("")
         assertTrue(list::isNotEmpty)
     }

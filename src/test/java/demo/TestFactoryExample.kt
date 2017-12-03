@@ -1,12 +1,31 @@
 package demo
 
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.DynamicTest.dynamicTest
 import org.junit.jupiter.api.TestFactory
 import java.time.LocalDate
 
 class TestFactoryExample {
+
+    private var someVar: Int? = null
+
+    @BeforeEach
+    fun `Reset some var`() {
+        someVar = 0
+    }
+
+    @TestFactory
+    fun `Test factory`(): Collection<DynamicTest> {
+        val ints = 0..5
+        return ints.map {
+            dynamicTest("Test №$it incrementing some var") {
+                someVar = someVar?.inc()
+                print(someVar)
+            }
+        }.toList()
+    }
 
     @TestFactory
     fun `Run multiple tests`(): Collection<DynamicTest> {

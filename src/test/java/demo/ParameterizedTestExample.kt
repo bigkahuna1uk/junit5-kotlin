@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
+import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
 import java.time.LocalDate
 import java.util.concurrent.TimeUnit
+import java.util.stream.Stream
+
 
 class ParameterizedTestExample {
 
@@ -26,5 +29,16 @@ class ParameterizedTestExample {
     @EnumSource(TimeUnit::class, mode = EnumSource.Mode.EXCLUDE, names = ["SECONDS", "MINUTES"])
     fun `Test enum without days and milliseconds`(timeUnit: TimeUnit) {
         assertNotNull(timeUnit)
+    }
+
+    @ParameterizedTest
+    @MethodSource("intProvider")
+    fun `Test with custom arguments provider`(argument: Int) {
+        assertNotNull(argument)
+    }
+
+    companion object {
+        @JvmStatic
+        fun intProvider(): Stream<Int> = Stream.of(0, 42, 9000)
     }
 }

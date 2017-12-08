@@ -2,6 +2,7 @@ package demo
 
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
 import org.junit.jupiter.params.provider.MethodSource
@@ -10,7 +11,7 @@ import java.time.LocalDate
 import java.util.concurrent.TimeUnit
 import java.util.stream.Stream
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ParameterizedTestExample {
 
     @ParameterizedTest
@@ -37,8 +38,5 @@ class ParameterizedTestExample {
         assertNotNull(argument)
     }
 
-    companion object {
-        @JvmStatic
-        fun intProvider(): Stream<Int> = Stream.of(0, 42, 9000)
-    }
+    fun intProvider(): Stream<Int> = Stream.of(0, 42, 9000)
 }

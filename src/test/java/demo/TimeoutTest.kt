@@ -9,6 +9,7 @@ class TimeoutTest {
 
     @Test
     fun `Timeout not exceeded`() {
+        // Тест упадёт после выполнения лямбда-выражения, если оно превысит 1000 мс
         assertTimeout(ofMillis(1000)) {
             print("Выполняется операция, которая займёт не больше 1 секунды")
             Thread.sleep(3)

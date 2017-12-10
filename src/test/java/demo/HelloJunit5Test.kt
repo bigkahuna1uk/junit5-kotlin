@@ -15,7 +15,7 @@ class HelloJunit5Test {
         print("Hello, JUnit5!")
     }
 
-    @DisplayName("Override `First test ╯°□°）╯` by ¯\\_(ツ)_/¯")
+    @DisplayName("\uD83D\uDC4D")
     @Test
     fun `First test ╯°□°）╯`() {
         print("Hello, JUnit5!")

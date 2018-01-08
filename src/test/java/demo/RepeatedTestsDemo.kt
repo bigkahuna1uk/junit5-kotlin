@@ -14,7 +14,7 @@ class RepeatedTestsDemo {
     }
 
     @RepeatedTest(5)
-    fun `Repeated test with repetition and test info`(repetitionInfo: RepetitionInfo, testInfo: TestInfo) {
+    fun `Repeated test with repetition info and test info`(repetitionInfo: RepetitionInfo, testInfo: TestInfo) {
         assertEquals(5, repetitionInfo.totalRepetitions)
         val testDisplayNameRegex = """repetition \d of 5""".toRegex()
         assertTrue(testInfo.displayName.matches(testDisplayNameRegex))

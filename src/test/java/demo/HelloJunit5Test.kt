@@ -46,8 +46,11 @@ class HelloJunit5Test {
     }
 
     @Test
-    fun `Test assertTrue with reference`() {
+    fun `Test assertTrue with reference and lambda`() {
         val list = listOf("")
         assertTrue(list::isNotEmpty)
+        assertTrue {
+            !list.contains("a")
+        }
     }
 }
